@@ -1,25 +1,37 @@
 class ContactManager:
-    def __init__(self , number,name,contact_dict) :
-        self.name = name
-        self.number = number
+    def __init__(self) :
+
         self.contact_dict = {}
     
         
       
 
-    def view_contacts() :
-        print(contact_dict)
+    def view_contacts(self) :
+            if not self.contact_dict:
+                print("No contacts found.")
+            else:
+                for name, number in self.contact_dict.items():
+                    print(f"{name.title()} : {number}")
 
-    def add_contacts(number,name) :
-        contact_dict.update({name: number})
 
-    def remove_contact(name) :
-        contact_dict.pop(name)
+    def add_contacts(self) :
+        name = input('Enter the name ').lower()
+        number = input('add the number ')
+        self.contact_dict[name] = number
+        print("Contact added successfully.")
 
-is_running = True 
-contact_dict = []
+    def remove_contact(self) :
+        name = input('Enter a name to remove: ').lower()
+        if name in self.contact_dict:
+            self.contact_dict.pop(name)
+            print("Contact removed successfully.")
+        else:
+            print("Contact not found.")
+
 
 if __name__ == '__main__' :
+    manager = ContactManager()
+    is_running = True 
 
 
     while is_running :
@@ -30,29 +42,28 @@ if __name__ == '__main__' :
         try:
             choice = int(input())
             if  choice == 1 :
-                ContactManager.view_contacts()
+                manager.view_contacts()
 
             elif choice == 2 :
-                 name = input('Enter the name ').lower()
-                 number = input('add the number ')
-                 ContactManager.add_contacts(number,name)
+                 manager.add_contacts()
 
             elif choice == 3 :
-                name = input('Enter a name to remove : ').lower()
-                ContactManager.remove_contact(name)
+                manager.remove_contact()
             
             else :
                 print('Not a valid selection ')
-            
-            exitoption = input('Press q to quit and c to continue ').lower()
+            while True :
+                exitoption = input('Press q to quit and c to continue ').lower()
 
-            if exitoption == 'q' :
-                print('Exiting ')
-                is_running = False
-            elif exitoption == 'c' :
-                print('started again')
-            else :
-                print("not a valid option ")
+                if exitoption == 'q' :
+                    print('Exiting ')
+                    is_running = False
+                    break
+                elif exitoption == 'c' :
+                     print('started again')
+                     break
+                else :
+                    print("not a valid option ")
 
                
 
