@@ -1,7 +1,10 @@
 class ContactManager:
-    def __init__(self , number,name) :
+    def __init__(self , number,name,contact_dict) :
         self.name = name
         self.number = number
+        self.contact_dict = {}
+    
+        
       
 
     def view_contacts() :
@@ -14,7 +17,7 @@ class ContactManager:
         contact_dict.pop(name)
 
 is_running = True 
-contact_dict = {}
+contact_dict = []
 
 if __name__ == '__main__' :
 
